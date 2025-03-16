@@ -20,19 +20,10 @@ export default defineConfig({
       },
       components: {
         PageTitle: "./src/components/title.astro",
+        Sidebar: "./src/components/sidebar.astro"
       },
       customCss: ["./src/styles/theme.css"],
-      sidebar: [
-        { label: "Introduction to MeowFi", slug: "" },
-        {
-          label: "Guides",
-          items: [{ label: "Example Guide", slug: "guides/example" }],
-        },
-        {
-          label: "Reference",
-          autogenerate: { directory: "reference" },
-        },
-      ],
+      
     }),
   ],
 });

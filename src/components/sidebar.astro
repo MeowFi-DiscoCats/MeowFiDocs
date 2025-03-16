@@ -1,0 +1,44 @@
+---
+const { sidebar } = Astro.locals.starlightRoute;
+console.log(JSON.stringify(sidebar));
+---
+
+<ul>
+  {
+    sidebar.map((first) => (
+      <li>
+        {first.type === "link" ? (
+          <a {...first}>{first.label}</a>
+        ) : (
+          <>
+            <a {...first.entries[0]}>{first.label}</a>
+            <ul>
+              {first.entries.map((second) => (
+                <li>
+                  {second.type === "link" ? (
+                    <a {...second}>{second.label}</a>
+                  ) : (
+                    <details>
+                      <summary>
+                        <a {...second.entries[0]}>{second.label}</a>
+                      </summary>
+                      <ul>
+                        {second.entries
+                          .filter((_third, i) => i !== 0)
+                          .map((third) => (
+                            <li>
+                              <a {...third}>{third.label}</a>
+                            </li>
+                          ))}
+                      </ul>
+                    </details>
+                  )}
+                </li>
+              ))}
+            </ul>
+          </>
+        )}
+      </li>
+    ))
+  }
+</ul>
