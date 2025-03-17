@@ -1,6 +1,10 @@
 ---
 const { sidebar } = Astro.locals.starlightRoute;
-console.log(JSON.stringify(sidebar));
+import MobileMenuFooter from '@astrojs/starlight/components/MobileMenuFooter.astro';
+import iconMap from "./../utils/icon.map";
+function checkActiveLink(list: typeof sidebar): boolean {
+  return list.some((item) => item.type === "link" && item.isCurrent);
+}
 ---
 
 <ul>
@@ -8,30 +12,97 @@ console.log(JSON.stringify(sidebar));
     sidebar.map((first) => (
       <li>
         {first.type === "link" ? (
-          <a {...first}>{first.label}</a>
+          <a
+            class={`px-2 group py-0.5 capitalize hover:text-white flex gap-2 hover:bg-gray-1/10 w-full items-center rounded-md ${first.isCurrent ? "text-accent hover:!text-accent-high" : ""}`}
+            href={first.href}
+            {...first.attrs}
+          >
+            {iconMap[first.label] && (
+              <span
+                class={`icon-style ${first.isCurrent ? "icon-active" : "icon-inactive"}`}
+                set:html={iconMap[first.label]}
+              />
+            )}
+            {first.label}
+          </a>
         ) : (
           <>
-            <a {...first.entries[0]}>{first.label}</a>
+            <div class="pt-6">
+              <a class="px-2 uppercase text-white py-0.5 w-full inline-block rounded-md">
+                {first.label}
+              </a>
+            </div>
             <ul>
               {first.entries.map((second) => (
                 <li>
                   {second.type === "link" ? (
-                    <a {...second}>{second.label}</a>
+                    <a
+                      class={`px-2 capitalize py-0.5 hover:text-white flex gap-2 hover:bg-gray-1/10 w-full items-center rounded-md ${second.isCurrent ? "text-accent hover:!text-accent-high" : ""}`}
+                      href={second.href}
+                      {...second.attrs}
+                    >
+                      {iconMap[second.label] && (
+                        <span
+                          class={`icon-style ${second.isCurrent ? "icon-active" : "icon-inactive"}`}
+                          set:html={iconMap[second.label]}
+                        />
+                      )}
+                      {second.label}
+                    </a>
                   ) : (
-                    <details>
-                      <summary>
-                        <a {...second.entries[0]}>{second.label}</a>
-                      </summary>
-                      <ul>
-                        {second.entries
-                          .filter((_third, i) => i !== 0)
-                          .map((third) => (
-                            <li>
-                              <a {...third}>{third.label}</a>
+                    second.entries[0]?.type === "link" && (
+                      <details
+                        open={checkActiveLink(second.entries)}
+                        class="group"
+                      >
+                        <summary class="list-none w-full flex items-center justify-between">
+                          <a
+                            class={`px-2 py-0.5 justify-between w-full capitalize hover:text-white flex gap-2 hover:bg-gray-1/10 rounded-md ${second.entries[0].isCurrent ? "text-accent hover:!text-accent-high" : ""}`}
+                            href={second.entries[0].href}
+                          >
+                            {iconMap[second.label] && (
+                              <span
+                                class={`icon-style ${second.entries[0].isCurrent ? "icon-active" : "icon-inactive"}`}
+                                set:html={iconMap[second.label]}
+                              />
+                            )}
+                            {second.label}
+                            <span class="chevron-icon mr-2 text-gray-1 group-open:rotate-90 transition-transform">
+                              <svg
+                                width="16"
+                                height="16"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg"
+                              >
+                                <path
+                                  d="M9 6L15 12L9 18"
+                                  stroke="currentColor"
+                                  stroke-width="2"
+                                  stroke-linecap="round"
+                                  stroke-linejoin="round"
+                                />
+                              </svg>
+                            </span>
+                          </a>
+                        </summary>
+                        <ul>
+                          {second.entries.slice(1).map((third) => (
+                            <li class="pl-4 flex flex-col gap-2 py-2">
+                              {third.type === "link" && (
+                                <a
+                                  class={`px-4 py-1 mt-2 capitalize border-l border-gray-1 hover:text-white hover:bg-gray-1/10 w-full inline-block rounded-r-md ${third.isCurrent ? "text-accent !border-accent hover:!text-accent-high" : ""}`}
+                                  href={third.href}
+                                  {...third.attrs}
+                                >
+                                  {third.label}
+                                </a>
+                              )}
                             </li>
                           ))}
-                      </ul>
-                    </details>
+                        </ul>
+                      </details>
+                    )
                   )}
                 </li>
               ))}
@@ -42,3 +113,19 @@ console.log(JSON.stringify(sidebar));
     ))
   }
 </ul>
+<div class="md:sl-hidden">
+	<MobileMenuFooter {...Astro.props} />
+</div>
+
+<style>
+  * {
+    font-weight: 600;
+    font-size: 0.9rem;
+  }
+
+  .chevron-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+</style>

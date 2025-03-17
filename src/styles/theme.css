@@ -1,5 +1,14 @@
 @import "tailwindcss";
 
+@theme {
+  --color-accent: var(--sl-color-accent); 
+  --color-accent-high: var(--sl-color-accent-high); 
+  --color-accent-low: var(--sl-color-accent-low);
+  --color-gray-1: var(--sl-color-gray-1);
+  --color-white: var(--sl-color-white);
+  --color-text: var(--sl-color-text);
+}
+
 :root,
 ::backdrop {
 	--sl-color-white: hsl(0, 0%, 100%); /* “white” */
@@ -35,6 +44,7 @@
 	--sl-color-accent-low: hsl(224, 54%, 20%);
 	--sl-color-accent: hsl(224, 100%, 60%);
 	--sl-color-accent-high: hsl(224, 100%, 85%);
+
 
 	--sl-color-text: var(--sl-color-gray-2);
 	--sl-color-text-accent: var(--sl-color-accent-high);
@@ -204,3 +214,30 @@
 .active:hover{
   background: var(--sl-color-accent-low); 
 }
+
+.icon-style svg {
+  height: 1em;
+  width: 1em;
+}
+
+.icon-style svg path {
+  transition: fill 0.2s ease-in-out;
+  fill: currentColor;
+}
+
+/* Active state */
+.icon-style.icon-active svg path {
+  fill: var(--sl-color-accent);
+}
+
+/* Ensure hover effect applies when parent (group) is hovered */
+.icon-style.icon-active:hover svg path,
+.group:hover .icon-style.icon-active svg path {
+  fill: var(--sl-color-accent-high) !important;
+}
+
+/* Inactive state with group hover */
+.group:hover .icon-style.icon-inactive svg path {
+  fill: white;
+}
+
