@@ -1,6 +1,6 @@
 ---
 const { sidebar } = Astro.locals.starlightRoute;
-import MobileMenuFooter from '@astrojs/starlight/components/MobileMenuFooter.astro';
+import MobileMenuFooter from "@astrojs/starlight/components/MobileMenuFooter.astro";
 import iconMap from "./../utils/icon.map";
 function checkActiveLink(list: typeof sidebar): boolean {
   return list.some((item) => item.type === "link" && item.isCurrent);
@@ -114,10 +114,21 @@ function checkActiveLink(list: typeof sidebar): boolean {
   }
 </ul>
 <div class="md:sl-hidden">
-	<MobileMenuFooter {...Astro.props} />
+  <MobileMenuFooter {...Astro.props} />
 </div>
 
 <style>
+  @import "tailwindcss";
+
+  @theme {
+    --color-accent: var(--sl-color-accent);
+    --color-accent-high: var(--sl-color-accent-high);
+    --color-accent-low: var(--sl-color-accent-low);
+    --color-gray-1: var(--sl-color-gray-1);
+    --color-white: var(--sl-color-white);
+    --color-text: var(--sl-color-text);
+  }
+
   * {
     font-weight: 600;
     font-size: 0.9rem;

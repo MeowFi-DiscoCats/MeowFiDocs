@@ -1,14 +1,3 @@
-@import "tailwindcss";
-
-@theme {
-  --color-accent: var(--sl-color-accent); 
-  --color-accent-high: var(--sl-color-accent-high); 
-  --color-accent-low: var(--sl-color-accent-low);
-  --color-gray-1: var(--sl-color-gray-1);
-  --color-white: var(--sl-color-white);
-  --color-text: var(--sl-color-text);
-}
-
 :root,
 ::backdrop {
 	--sl-color-white: hsl(0, 0%, 100%); /* “white” */

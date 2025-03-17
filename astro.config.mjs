@@ -8,22 +8,19 @@ export default defineConfig({
   vite: {
     plugins: [tailwindcss()],
   },
-  integrations: [
-    starlight({
-      title: "DiscoCats",
-      social: {
-        discord: "https://discord.com/invite/RZWntTWFrb",
-      },
-      logo: {
-        src: "./src/assets/logo.avif",
-        alt: "DiscoCats Logo",
-      },
-      components: {
-        PageTitle: "./src/components/title.astro",
-        Sidebar: "./src/components/sidebar.astro"
-      },
-      customCss: ["./src/styles/theme.css"],
-      
-    }),
-  ],
+  integrations: [starlight({
+    title: "DiscoCats",
+    social: {
+      discord: "https://discord.com/invite/RZWntTWFrb",
+    },
+    logo: {
+      src: "./src/assets/logo.avif",
+      alt: "DiscoCats Logo",
+    },
+    components: {
+      PageTitle: "./src/components/title.astro",
+      Sidebar: "./src/components/sidebar.astro"
+    },
+    customCss: ["./src/styles/theme.css"],
+  })],
 });
