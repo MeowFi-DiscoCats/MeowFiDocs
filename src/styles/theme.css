@@ -1,7 +1,7 @@
 :root {
   --sl-text-2xl: 1.25rem;
   --sl-text-3xl: 1.3rem;
-  --sl-text-4xl: 1.5rem;
+  --sl-text-4xl: 1.8rem;
 }
 
 @media (min-width: 50em) {
@@ -51,6 +51,12 @@
 .icon-style svg {
   height: 1em;
   width: 1em;
+}
+
+.icon-style {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .icon-style svg path {

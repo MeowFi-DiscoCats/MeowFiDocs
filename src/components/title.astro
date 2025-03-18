@@ -9,13 +9,18 @@ import iconMap from "./../utils/icon.map";
   isHomepage ? (
     <>
       <img class="w-full" src="/intro.png" alt="intro" />
-      <h1 class="flex text-4xl font-bold items-center gap-1">
-        <span set:html={iconMap[title]} class="icon-style icon-active" />
+      <h1 class="flex text-4xl font-bold items-center gap-4">
+        <span class="icon-style icon-active" set:html={iconMap[title]} />
         {title}
       </h1>
     </>
   ) : (
-    <h1 class="font-bold text-4xl text-[var(--sl-color-white)]">{title}</h1>
+    <h1 class="flex text-4xl font-bold items-center gap-4">
+      {iconMap[title] && (
+        <span class="icon-style icon-active" set:html={iconMap[title]} />
+      )}
+      {title}
+    </h1>
   )
 }
 

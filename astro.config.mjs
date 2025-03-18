@@ -17,6 +17,7 @@ export default defineConfig({
       src: "./src/assets/logo.avif",
       alt: "DiscoCats Logo",
     },
+    favicon: "/favicon.ico",
     components: {
       PageTitle: "./src/components/title.astro",
       Sidebar: "./src/components/sidebar.astro"
