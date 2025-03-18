@@ -1,8 +1,8 @@
 ---
-const { title } = Astro.locals.starlightRoute.entry.data;
-const isHomepage = Astro.locals.starlightRoute.id === "";
+const { title } = Astro.locals.starlightRoute.entry.data
+const isHomepage = Astro.locals.starlightRoute.id === ''
 
-import iconMap from "./../utils/icon.map";
+import iconMap from './../utils/icon.map'
 ---
 
 {
@@ -16,14 +16,12 @@ import iconMap from "./../utils/icon.map";
     </>
   ) : (
     <h1 class="flex text-4xl font-bold items-center gap-4">
-      {iconMap[title] && (
-        <span class="icon-style icon-active" set:html={iconMap[title]} />
-      )}
+      {iconMap[title] && <span class="icon-style icon-active" set:html={iconMap[title]} />}
       {title}
     </h1>
   )
 }
 
 <style>
-  @import "tailwindcss";
+  @import 'tailwindcss';
 </style>

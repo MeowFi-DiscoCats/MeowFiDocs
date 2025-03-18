@@ -2,7 +2,7 @@
 title: Introduction to MeowFi
 description: MeowFi is the fusion of NFTs with DeFi. By offering multi-layered yield strategies that prioritize flexibility and control, we enable you to tap into diverse yield sources through liquid strategies, utilizing NFT vaults to access liquidity—without the constraints of lock-in periods or unnecessary risks.
 sidebar:
-    order: 1
+  order: 1
 ---
 
 Meow Finance is the fusion of NFTs with DeFi. By offering multi-layered yield strategies that prioritize flexibility and control, we enable you to tap into diverse yield sources through liquid strategies, utilizing NFT vaults to access liquidity—without the constraints of lock-in periods or unnecessary risks.

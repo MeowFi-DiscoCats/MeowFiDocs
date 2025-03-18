@@ -1,5 +1,5 @@
 ---
-title: "Chapter 1: The Beats" 
+title: 'Chapter 1: The Beats'
 description: A reference page in my new Starlight docs site.
 sidebar:
   order: 6

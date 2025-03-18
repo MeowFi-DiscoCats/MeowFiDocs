@@ -26,16 +26,16 @@
   color: var(--sl-color-white);
 }
 
-[alt="intro"] {
+[alt='intro'] {
   border-radius: 0.5rem;
 }
 
-[aria-current="page"] {
+[aria-current='page'] {
   background: transparent;
   color: var(--sl-color-accent);
 }
 
-[aria-current="page"]:hover {
+[aria-current='page']:hover {
   background: var(--sl-color-accent-low);
   color: var(--sl-color-accent);
 }
@@ -64,18 +64,26 @@
   fill: currentColor;
 }
 
-/* Active state */
 .icon-style.icon-active svg path {
   fill: var(--sl-color-accent);
 }
 
-/* Ensure hover effect applies when parent (group) is hovered */
 .icon-style.icon-active:hover svg path,
 .group:hover .icon-style.icon-active svg path {
   fill: var(--sl-color-accent-high) !important;
 }
 
-/* Inactive state with group hover */
 .group:hover .icon-style.icon-inactive svg path {
-  fill: white;
+  fill: var(--sl-color-white);
+}
+
+#starlight__sidebar::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+#starlight__sidebar::-webkit-scrollbar-thumb {
+  background: var(--sl-color-gray-4);
+  border-radius: 10px;
+  transition: background 0.3s ease-in-out;
 }
