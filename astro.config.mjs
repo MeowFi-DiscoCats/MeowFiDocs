@@ -10,13 +10,13 @@ export default defineConfig({
   },
   integrations: [
     starlight({
-      title: 'DiscoCats',
+      title: 'MeowFi',
       social: {
         discord: 'https://discord.com/invite/RZWntTWFrb',
       },
       logo: {
-        src: './src/assets/logo.avif',
-        alt: 'DiscoCats Logo',
+        src: './src/assets/logo.webp',
+        alt: 'MeowFi Logo',
       },
       favicon: '/favicon.ico',
       components: {
